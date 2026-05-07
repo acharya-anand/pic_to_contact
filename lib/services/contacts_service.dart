@@ -40,6 +40,9 @@ class ContactsService {
       addresses: contact.address != null
           ? [Address(contact.address!)]
           : [],
+      websites: contact.website != null
+          ? [Website(contact.website!)]
+          : [],
     );
 
     await newContact.insert();

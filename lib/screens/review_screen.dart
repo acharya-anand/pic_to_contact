@@ -20,6 +20,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
   late final TextEditingController _phone;
   late final TextEditingController _email;
   late final TextEditingController _address;
+  late final TextEditingController _website;
   bool _saving = false;
 
   @override
@@ -29,6 +30,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
     _phone = TextEditingController(text: widget.contact.phone);
     _email = TextEditingController(text: widget.contact.email ?? '');
     _address = TextEditingController(text: widget.contact.address ?? '');
+    _website = TextEditingController(text: widget.contact.website ?? '');
   }
 
   @override
@@ -37,6 +39,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
     _phone.dispose();
     _email.dispose();
     _address.dispose();
+    _website.dispose();
     super.dispose();
   }
 
@@ -45,6 +48,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
         phone: _phone.text.trim(),
         email: _email.text.trim().isEmpty ? null : _email.text.trim(),
         address: _address.text.trim().isEmpty ? null : _address.text.trim(),
+        website: _website.text.trim().isEmpty ? null : _website.text.trim(),
       );
 
   bool get _canSave =>
@@ -154,6 +158,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 controller: _address,
                 keyboardType: TextInputType.streetAddress,
                 maxLines: 3,
+              ),
+              ContactFieldTile(
+                label: 'Website',
+                controller: _website,
+                keyboardType: TextInputType.url,
               ),
               const SizedBox(height: 8),
               ListenableBuilder(

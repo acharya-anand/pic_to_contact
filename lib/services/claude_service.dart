@@ -22,9 +22,9 @@ class ClaudeService {
   static const _prompt =
       'Extract contact information from this image.\n'
       'Respond ONLY with a JSON object — no markdown, no explanation.\n'
-      'Use exactly these keys: name, phone, email, address.\n'
+      'Use exactly these keys: name, phone, email, address, website.\n'
       'Omit a key entirely if that information is not visible.\n'
-      'Example: {"name":"Jane Smith","phone":"+1 555-234-5678","email":"jane@example.com"}';
+      'Example: {"name":"Jane Smith","phone":"+1 555-234-5678","email":"jane@example.com","website":"https://example.com"}';
 
   static Future<ExtractedContact> extractContact(
     Uint8List imageBytes,
